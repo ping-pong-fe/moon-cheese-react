@@ -46,7 +46,7 @@ function ShoppingCartSection() {
   );
 }
 
-const ShoppingCartItem = ({
+function ShoppingCartItem({
   type,
   image,
   name,
@@ -62,7 +62,7 @@ const ShoppingCartItem = ({
   price: number;
   quantity: number;
   onDelete?: () => void;
-}) => {
+}) {
   return (
     <Flex gap={4}>
       <styled.img src={image} alt={name} css={{ w: '60px', h: '60px', rounded: 'lg' }} />
@@ -86,6 +86,6 @@ const ShoppingCartItem = ({
       </Flex>
     </Flex>
   );
-};
+}
 
 export default ShoppingCartSection;

@@ -56,7 +56,7 @@ function ProductListSection() {
   );
 }
 
-const ProductItem = ({
+function ProductItem({
   image,
   name,
   description,
@@ -72,7 +72,7 @@ const ProductItem = ({
   rating: number;
   freeTag?: 'milk' | 'caffeine' | 'gluten';
   onClick?: () => void;
-}) => {
+}) {
   const [count, setCount] = useState(0);
 
   return (
@@ -105,7 +105,7 @@ const ProductItem = ({
       <Counter value={count} onValueChange={setCount} max={3} />
     </Box>
   );
-};
+}
 
 function IconFree({ type }: { type: 'milk' | 'caffeine' | 'gluten' }) {
   if (type === 'milk') {

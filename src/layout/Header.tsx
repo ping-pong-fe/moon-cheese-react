@@ -35,7 +35,7 @@ export function Header() {
   );
 }
 
-const BackButton = () => {
+function BackButton() {
   const navigate = useNavigate();
 
   return (
@@ -43,9 +43,9 @@ const BackButton = () => {
       <ArrowLeftIcon />
     </styled.button>
   );
-};
+}
 
-const ShoppingCartButton = () => {
+function ShoppingCartButton() {
   const navigate = useNavigate();
 
   return (
@@ -53,4 +53,4 @@ const ShoppingCartButton = () => {
       <ShoppingCartIcon size={22} />
     </Badge>
   );
-};
+}

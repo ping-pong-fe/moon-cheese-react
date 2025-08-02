@@ -42,7 +42,7 @@ function RecommendationSection() {
   );
 }
 
-const ProductItem = ({
+function ProductItem({
   name,
   price,
   rating,
@@ -54,7 +54,7 @@ const ProductItem = ({
   rating: number;
   image: string;
   onClick?: () => void;
-}) => {
+}) {
   return (
     <Box role="button" onClick={onClick} css={{ flexShrink: 0, w: '140px', cursor: 'pointer' }}>
       <styled.img
@@ -82,6 +82,6 @@ const ProductItem = ({
       <Text variant="C1_Bold">${price.toFixed(2).toLocaleString()}</Text>
     </Box>
   );
-};
+}
 
 export default RecommendationSection;

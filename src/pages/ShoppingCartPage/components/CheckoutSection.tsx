@@ -1,4 +1,4 @@
-import { Button, DeliveryIcon, Spacing, Text } from '@/ui-lib';
+import { Button, Spacing, Text } from '@/ui-lib';
 import { Box, Divider, Flex, HStack, Stack, styled } from 'styled-system/jsx';
 
 function CheckoutSection() {
@@ -40,21 +40,6 @@ function CheckoutSection() {
           {`우리는 신용카드, 은행 송금, 모바일 결제, 현금을 받아들입니다\n안전한 체크아웃\n귀하의 결제 정보는 암호화되어 안전합니다.`}
         </Text>
       </Stack>
-
-      <Spacing size={4} />
-
-      <Flex gap={3} css={{ p: 5, py: 4, bgColor: 'background.02_light-gray', rounded: '2xl' }}>
-        <DeliveryIcon size={28} />
-
-        <Flex flexDir="column" gap={1}>
-          <Text variant="B2_Regular" fontWeight={'semibold'}>
-            3-5일 후 도착 예정
-          </Text>
-          <Text variant="C2_Medium" color={'neutral.02_gray'}>
-            결제 시 익스프레스 배송 가능
-          </Text>
-        </Flex>
-      </Flex>
     </styled.section>
   );
 }
