@@ -1,14 +1,17 @@
+type ProductCategory = "CHEESE" | "CRACKER" | "TEA";
+
 export type Product = {
 	id: number;
 	name: string;
-	category: string;
+	category: ProductCategory;
 	stock: number;
 	price: number;
 	description: string;
 	detailDescription: string;
 	images: string[];
 	rating: number;
-	likesCount: number;
+	isGlutenFree?: boolean;
+	isCaffeineFree?: boolean;
 };
 
 export const products: Product[] = [
@@ -28,7 +31,6 @@ export const products: Product[] = [
 			"/moon-cheese-images/cheese-1-4.jpg",
 		],
 		rating: 4.8,
-		likesCount: 0,
 	},
 	{
 		id: 2,
@@ -46,7 +48,6 @@ export const products: Product[] = [
 			"/moon-cheese-images/cheese-2-4.jpg",
 		],
 		rating: 4.9,
-		likesCount: 0,
 	},
 	{
 		id: 3,
@@ -64,7 +65,6 @@ export const products: Product[] = [
 			"/moon-cheese-images/cheese-3-4.jpg",
 		],
 		rating: 4.6,
-		likesCount: 0,
 	},
 	{
 		id: 4,
@@ -82,7 +82,6 @@ export const products: Product[] = [
 			"/moon-cheese-images/cheese-4-4.jpg",
 		],
 		rating: 4.7,
-		likesCount: 0,
 	},
 	{
 		id: 5,
@@ -100,7 +99,7 @@ export const products: Product[] = [
 			"/moon-cheese-images/cracker-1-4.jpg",
 		],
 		rating: 4.5,
-		likesCount: 0,
+		isGlutenFree: true,
 	},
 	{
 		id: 6,
@@ -118,7 +117,7 @@ export const products: Product[] = [
 			"/moon-cheese-images/cracker-2-4.jpg",
 		],
 		rating: 4.4,
-		likesCount: 0,
+		isGlutenFree: false,
 	},
 	{
 		id: 7,
@@ -136,7 +135,7 @@ export const products: Product[] = [
 			"/moon-cheese-images/cracker-3-4.jpg",
 		],
 		rating: 4.3,
-		likesCount: 0,
+		isGlutenFree: true,
 	},
 	{
 		id: 8,
@@ -153,7 +152,7 @@ export const products: Product[] = [
 			"/moon-cheese-images/tea-1-3.jpg",
 		],
 		rating: 4.8,
-		likesCount: 0,
+		isCaffeineFree: true,
 	},
 	{
 		id: 9,
@@ -170,7 +169,7 @@ export const products: Product[] = [
 			"/moon-cheese-images/tea-2-3.jpg",
 		],
 		rating: 4.6,
-		likesCount: 0,
+		isCaffeineFree: false,
 	},
 	{
 		id: 10,
@@ -188,12 +187,36 @@ export const products: Product[] = [
 			"/moon-cheese-images/tea-3-4.jpg",
 		],
 		rating: 4.7,
-		likesCount: 0,
+		isCaffeineFree: false,
 	},
 ];
 
+export const recommendProductIdMap = {
+	// 월레스의 오리지널 웬슬리데일
+	1: [5, 8],
+	// 그랜드 데이 아웃 체다
+	2: [6, 8, 10],
+	// 전자바지 브리
+	3: [7],
+	// 숀 더 쉽 크림치즈
+	4: [5, 9, 10],
+	// 치즈홀 크레커
+	5: [1, 8],
+	// 로봇 크런치 비스킷
+	6: [2, 10],
+	// 펭귄 페퍼잭 크래커
+	7: [3, 9],
+
+	// 그로밋의 잉글리쉬 브렉퍼스트 티
+	8: [1, 5],
+	// 문라이트 카모마일 티
+	9: [4, 7],
+	// 레드 로켓 루이보스 티
+	10: [2, 4, 6],
+};
+
 // 등급별 포인트 설정
-const GRADE_POINTS = {
+export const GRADE_POINTS = {
 	EXPLORER: 0,
 	PILOT: 3.5,
 	COMMANDER: 7,
@@ -224,13 +247,6 @@ type GradePoint = {
 	minPoint: number;
 };
 
-// 배송 관련 등급 타입
-type GradeShipping = {
-	type: GradeType;
-	shippingFee: number;
-	freeShippingThreshold: number;
-};
-
 // 등급별 포인트 데이터
 const gradePointData: Record<GradeType, GradePoint> = {
 	EXPLORER: {
@@ -253,45 +269,20 @@ export const gradePointList = [
 	gradePointData.COMMANDER,
 ];
 
-// 등급별 배송 데이터
-const gradeShippingData: Record<GradeType, GradeShipping> = {
-	EXPLORER: {
+export const gradeShippingList = [
+	{
 		type: "EXPLORER",
 		shippingFee: GRADE_SHIPPING.EXPLORER.fee,
 		freeShippingThreshold: GRADE_SHIPPING.EXPLORER.freeThreshold,
 	},
-	PILOT: {
+	{
 		type: "PILOT",
 		shippingFee: GRADE_SHIPPING.PILOT.fee,
 		freeShippingThreshold: GRADE_SHIPPING.PILOT.freeThreshold,
 	},
-	COMMANDER: {
+	{
 		type: "COMMANDER",
 		shippingFee: GRADE_SHIPPING.COMMANDER.fee,
 		freeShippingThreshold: GRADE_SHIPPING.COMMANDER.freeThreshold,
 	},
-};
-
-export const gradeShippingList = [
-	gradeShippingData.EXPLORER,
-	gradeShippingData.PILOT,
-	gradeShippingData.COMMANDER,
 ];
-
-type User = {
-	id: number;
-	name: string;
-	email: string;
-	point: number;
-	grade: GradeType;
-	wishList: Product[];
-};
-
-export const user: User = {
-	id: 10111,
-	name: "김철수",
-	email: "kim@gmail.com",
-	point: 3,
-	grade: "EXPLORER",
-	wishList: [],
-};

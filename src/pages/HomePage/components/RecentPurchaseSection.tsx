@@ -11,25 +11,53 @@ function RecentPurchaseSection() {
 			<Flex
 				css={{
 					bg: "background.01_white",
-					gap: 4,
 					px: 5,
 					py: 4,
+					gap: 4,
 					rounded: "2xl",
 				}}
+				direction={"column"}
 			>
-				<styled.img
-					src="/moon-cheese-images/cheese-1-1.jpg"
-					alt="item"
+				<Flex
 					css={{
-						w: "60px",
-						h: "60px",
-						objectFit: "cover",
-						rounded: "xl",
+						gap: 4,
 					}}
-				/>
-				<Flex flexDir="column" gap={1}>
-					<Text variant="B2_Medium">월레스의 오리지널 웬슬리데일</Text>
-					<Text variant="H1_Bold">$12.99</Text>
+				>
+					<styled.img
+						src="/moon-cheese-images/cheese-1-1.jpg"
+						alt="item"
+						css={{
+							w: "60px",
+							h: "60px",
+							objectFit: "cover",
+							rounded: "xl",
+						}}
+					/>
+					<Flex flexDir="column" gap={1}>
+						<Text variant="B2_Medium">월레스의 오리지널 웬슬리데일</Text>
+						<Text variant="H1_Bold">$12.99</Text>
+					</Flex>
+				</Flex>
+
+				<Flex
+					css={{
+						gap: 4,
+					}}
+				>
+					<styled.img
+						src="/moon-cheese-images/cheese-2-1.jpg"
+						alt="item"
+						css={{
+							w: "60px",
+							h: "60px",
+							objectFit: "cover",
+							rounded: "xl",
+						}}
+					/>
+					<Flex flexDir="column" gap={1}>
+						<Text variant="B2_Medium">그랜드 데이 아웃 체다</Text>
+						<Text variant="H1_Bold">$14.87</Text>
+					</Flex>
 				</Flex>
 			</Flex>
 		</styled.section>
