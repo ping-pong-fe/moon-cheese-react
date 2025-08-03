@@ -1,5 +1,5 @@
 import { HttpResponse, http } from 'msw';
-import { gradePointList, gradeShippingList, products, user, type Product } from './data';
+import { gradePointList, gradeShippingList, products, user } from './data';
 
 const ERROR_CHANCE = 0.33;
 
@@ -97,7 +97,7 @@ export const handlers = [
     );
   }),
 
-  http.post('/api/cart/:productId', async ({ request, params }) => {
+  http.post('/api/cart/:productId', async ({ params }) => {
     const product = products.find(product => product.id === Number(params.productId));
     if (!product) {
       return new HttpResponse(null, { status: 404 });
