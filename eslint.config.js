@@ -9,7 +9,7 @@ import globals from "globals";
 
 export default tseslint.config([
 	{
-		ignores: ["dist/**/*"]
+		ignores: ["dist/**/*"],
 	},
 	{
 		files: ["**/*.{ts,tsx,js,jsx}"],
@@ -20,9 +20,9 @@ export default tseslint.config([
 		],
 		plugins: {
 			"@typescript-eslint": tseslint.plugin,
-			"import": importPlugin,
-			"prettier": prettierPlugin,
-			"react": reactPlugin,
+			import: importPlugin,
+			prettier: prettierPlugin,
+			react: reactPlugin,
 			"react-hooks": reactHooks,
 		},
 		languageOptions: {
@@ -40,7 +40,7 @@ export default tseslint.config([
 			},
 		},
 		settings: {
-			react: { version: "detect" }
+			react: { version: "detect" },
 		},
 		rules: {
 			"prettier/prettier": "error",
@@ -48,9 +48,9 @@ export default tseslint.config([
 
 			"no-undef": "off",
 
-			"indent": "off",
+			indent: "off",
 			"@typescript-eslint/indent": "off",
-			"semi": "off",
+			semi: "off",
 
 			"@typescript-eslint/no-non-null-assertion": "off",
 			"@typescript-eslint/no-explicit-any": "off",
@@ -99,7 +99,10 @@ export default tseslint.config([
 			],
 			"@typescript-eslint/explicit-module-boundary-types": "off",
 			"@typescript-eslint/array-type": ["error", { default: "array-simple" }],
-			"@typescript-eslint/no-unused-vars": ["error", { ignoreRestSiblings: true }],
+			"@typescript-eslint/no-unused-vars": [
+				"error",
+				{ ignoreRestSiblings: true },
+			],
 			"@typescript-eslint/member-ordering": [
 				"error",
 				{
@@ -124,8 +127,8 @@ export default tseslint.config([
 			],
 			"prefer-const": "error",
 			"no-var": "error",
-			"curly": ["error", "all"],
-			"eqeqeq": ["error", "always", { null: "ignore" }],
+			curly: ["error", "all"],
+			eqeqeq: ["error", "always", { null: "ignore" }],
 			"import/no-duplicates": "error",
 
 			"react/prop-types": "off",

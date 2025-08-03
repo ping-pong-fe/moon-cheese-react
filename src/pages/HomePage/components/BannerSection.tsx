@@ -1,9 +1,34 @@
-import { styled } from 'styled-system/jsx';
+import { Box, styled } from "styled-system/jsx";
 
-const IMAGE_SRC = '/moon-cheese-images/cheese-1.jpg';
+const IMAGE_SRC = "/moon-cheese-images/thumbnail.png";
+const LOGO_TEXT_SRC = "/moon-cheese-images/logo-text.png";
 
 function BannerSection() {
-  return <styled.img src={IMAGE_SRC} alt="banner" css={{ w: 'full', h: 300, objectFit: 'cover' }} />;
+	return (
+		<Box
+			css={{
+				position: "relative",
+			}}
+		>
+			<styled.img
+				src={IMAGE_SRC}
+				alt="banner"
+				css={{ w: "full", h: 300, objectFit: "cover" }}
+			/>
+			<styled.img
+				src={LOGO_TEXT_SRC}
+				alt="banner"
+				css={{
+					w: "80%",
+					left: "50%",
+					transform: "translateX(-50%)",
+					objectFit: "contain",
+					position: "absolute",
+					bottom: "0.2rem",
+				}}
+			/>
+		</Box>
+	);
 }
 
 export default BannerSection;
