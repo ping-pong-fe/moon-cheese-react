@@ -28,10 +28,19 @@ let userGrade = "EXPLORER";
 
 let recentProducts: RecentProduct[] = defaultRecentProducts;
 
+const delay = (minMs: number = 120, maxMs: number = 300) =>
+	new Promise((resolve) =>
+		setTimeout(
+			resolve,
+			Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs,
+		),
+	);
+
 const KRW_EXCHANGE_RATE = Math.floor(Math.random() * (1400 - 1200 + 1)) + 1200;
 
 export const handlers = [
 	http.get("/api/product/list", async () => {
+		await delay();
 		return HttpResponse.json(
 			{
 				products: products,
@@ -41,6 +50,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/product/:id", async ({ params }) => {
+		await delay();
 		const { id } = params;
 		if (!id) {
 			return new HttpResponse(null, {
@@ -69,6 +79,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/product/recommend/:id", async ({ params }) => {
+		await delay();
 		const isError = isErrorRandomly(ERROR_CHANCE);
 		if (isError) {
 			return new HttpResponse(null, {
@@ -106,6 +117,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/exchange-rate", async () => {
+		await delay();
 		return HttpResponse.json(
 			{
 				exchangeRate: {
@@ -118,6 +130,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/me", async () => {
+		await delay();
 		const isError = isErrorRandomly(ERROR_CHANCE);
 		if (isError) {
 			return new HttpResponse(null, {
@@ -136,6 +149,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/grade/point", async () => {
+		await delay();
 		const isError = isErrorRandomly(ERROR_CHANCE);
 		if (isError) {
 			return new HttpResponse(null, {
@@ -153,6 +167,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/grade/shipping", async () => {
+		await delay();
 		return HttpResponse.json(
 			{
 				gradeShippingList,
@@ -162,6 +177,7 @@ export const handlers = [
 	}),
 
 	http.get("/api/recent/product/list", async () => {
+		await delay();
 		return HttpResponse.json(
 			{
 				recentProducts,
@@ -173,6 +189,7 @@ export const handlers = [
 	http.post<object, { productId: number; quantity: number }[]>(
 		"/api/product/purchase",
 		async ({ request }) => {
+			await delay();
 			const isError = isErrorRandomly(ERROR_CHANCE);
 			if (isError) {
 				return new HttpResponse(null, {
